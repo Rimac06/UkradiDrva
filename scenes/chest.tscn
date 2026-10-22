@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://cfyexcma5m202"]
+
+[ext_resource type="Texture2D" uid="uid://cpnebptrhyx43" path="res://assets/sprites/miscellaneous/Chest.png" id="1_oii8l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_06txj"]
+size = Vector2(16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jjc5n"]
+radius = 31.257
+
+[node name="Chest" type="StaticBody2D" unique_id=412556864]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1012465495]
+texture = ExtResource("1_oii8l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=996845070]
+shape = SubResource("RectangleShape2D_06txj")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1464296026]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=597400708]
+shape = SubResource("CircleShape2D_jjc5n")
+
+[node name="Interact" type="Control" parent="." unique_id=19287004]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Interact" unique_id=114306918]
+layout_mode = 0
+offset_left = -20.0
+offset_top = -26.0
+offset_right = 20.0
+offset_bottom = -3.0
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Interact" unique_id=596534154]
+layout_mode = 0
+offset_left = -32.0
+offset_top = -46.0
+offset_right = 32.0
+offset_bottom = 18.0
+fill_mode = 4

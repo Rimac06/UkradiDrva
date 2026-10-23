@@ -1,9 +1,7 @@
 [gd_scene format=3 uid="uid://d8ogdqy8ymw4"]
 
 [ext_resource type="Script" uid="uid://dr711nhmxtxae" path="res://scripts/ui/ui.gd" id="1_nt7q6"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_06txj"]
-font_size = 20
+[ext_resource type="FontFile" uid="uid://2f6mvnfp1dvw" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_x4jx1"]
 
 [node name="UI" type="CanvasLayer" unique_id=2038628786]
 layer = 10
@@ -12,10 +10,46 @@ script = ExtResource("1_nt7q6")
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1375780637]
 layer = 100
 
-[node name="Label" type="Label" parent="HUD" unique_id=176367311]
-offset_left = 64.0
+[node name="WoodStolenLabel" type="RichTextLabel" parent="HUD" unique_id=671669980]
+offset_left = 24.0
 offset_top = 23.0
-offset_right = 126.0
-offset_bottom = 51.0
+offset_right = 154.66667
+offset_bottom = 72.333336
+scale = Vector2(1.5, 1.5)
+theme_override_fonts/normal_font = ExtResource("2_x4jx1")
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
 text = "Wood:"
-label_settings = SubResource("LabelSettings_06txj")
+
+[node name="WoodCarryingLabel" type="RichTextLabel" parent="HUD" unique_id=1484572910]
+offset_left = 24.0
+offset_top = 83.0
+offset_right = 200.0
+offset_bottom = 132.33334
+scale = Vector2(1.5, 1.5)
+theme_override_fonts/normal_font = ExtResource("2_x4jx1")
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "Wood:"
+
+[node name="WoodRemainingLabel" type="RichTextLabel" parent="HUD" unique_id=936510964]
+offset_left = 24.0
+offset_top = 115.0
+offset_right = 197.33334
+offset_bottom = 164.33334
+scale = Vector2(1.5, 1.5)
+theme_override_fonts/normal_font = ExtResource("2_x4jx1")
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "Wood:"
+
+[node name="StaminaLabel" type="RichTextLabel" parent="HUD" unique_id=830777547]
+offset_left = 889.00006
+offset_top = 24.000008
+offset_right = 1062.3335
+offset_bottom = 73.33335
+scale = Vector2(1.5, 1.5)
+theme_override_fonts/normal_font = ExtResource("2_x4jx1")
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "Wood:"

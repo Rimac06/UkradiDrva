@@ -183,7 +183,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"walk_1",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -200,7 +200,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"walk_2",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -217,7 +217,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"walk_3",
-"speed": 4.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -234,7 +234,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"walk_4",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -251,7 +251,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"walk_5",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -268,7 +268,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"walk_6",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -285,7 +285,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"walk_7",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -302,7 +302,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"walk_8",
-"speed": 5.0
+"speed": 6.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_moqms"]
@@ -322,7 +322,7 @@ script = ExtResource("1_qhqgy")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=605115136]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_jjc5n")
-animation = &"walk_3"
+animation = &"walk_8"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1627119300]
 position = Vector2(0, -4.5)
@@ -332,7 +332,7 @@ shape = SubResource("CircleShape2D_moqms")
 
 [node name="WalkAudio" type="AudioStreamPlayer2D" parent="SFX" unique_id=2057301158]
 stream = SubResource("AudioStreamRandomizer_fhwqp")
-volume_db = -5.0
+volume_db = -15.0
 
 [node name="FootstepTimer" type="Timer" parent="SFX" unique_id=695526506]
 wait_time = 0.5

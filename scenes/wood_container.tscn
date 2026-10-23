@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://cr8lwq52mqxxq"]
+
+[ext_resource type="Script" uid="uid://cy0gookh068im" path="res://scripts/objects/wood_container.gd" id="1_0gx3q"]
+[ext_resource type="Texture2D" uid="uid://cr8iek2qua3m6" path="res://assets/sprites/objects/chest/Colorful Treasure Chests/Orange/Large Treasure Chest/Large Orange Treasure Chest (Open - Empty).png" id="2_0ystg"]
+[ext_resource type="FontFile" uid="uid://2f6mvnfp1dvw" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_dys6g"]
+[ext_resource type="Texture2D" uid="uid://du47vess0gaf0" path="res://assets/sprites/miscellaneous/loading_circle.png" id="4_bscbl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ve6cx"]
+atlas = ExtResource("2_0ystg")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t82oy"]
+animations = [{
+"frames": [],
+"loop": 1,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ve6cx")
+}],
+"loop": 1,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_snebi"]
+size = Vector2(16, 10)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3t3mw"]
+radius = 31.257
+
+[sub_resource type="LabelSettings" id="LabelSettings_0x3ds"]
+font = ExtResource("3_dys6g")
+font_size = 6
+
+[node name="WoodContainer" type="StaticBody2D" unique_id=412556864]
+script = ExtResource("1_0gx3q")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1536156232]
+position = Vector2(-1.4210855e-14, -8)
+scale = Vector2(0.5279605, 0.52796054)
+sprite_frames = SubResource("SpriteFrames_t82oy")
+animation = &"open"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=996845070]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_snebi")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1464296026]
+position = Vector2(0, -7)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=597400708]
+shape = SubResource("CircleShape2D_3t3mw")
+
+[node name="InteractLabel" type="Control" parent="." unique_id=19287004]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -7.0
+offset_right = 40.0
+offset_bottom = 33.0
+
+[node name="Label" type="Label" parent="InteractLabel" unique_id=114306918]
+layout_mode = 0
+offset_left = -20.0
+offset_top = -25.0
+offset_right = 20.0
+offset_bottom = -2.0
+text = "E"
+label_settings = SubResource("LabelSettings_0x3ds")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Loading" type="TextureProgressBar" parent="InteractLabel" unique_id=596534154]
+layout_mode = 0
+offset_left = -11.0
+offset_top = -27.0
+offset_right = 21.0
+offset_bottom = 5.0
+scale = Vector2(0.7, 0.7)
+max_value = 5.0
+step = 0.1
+value = 5.0
+fill_mode = 4
+texture_progress = ExtResource("4_bscbl")

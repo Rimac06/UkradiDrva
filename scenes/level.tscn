@@ -479,6 +479,7 @@ position = Vector2(1573, -187)
 position = Vector2(1458, -189)
 
 [node name="Chests" type="Node2D" parent="." unique_id=1364841880]
+y_sort_enabled = true
 
 [node name="Chest" parent="Chests" unique_id=562018114 instance=ExtResource("1_mx8sn")]
 position = Vector2(694, -289)

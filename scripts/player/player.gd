@@ -11,36 +11,49 @@ var is_sprinting: bool = false
 
 func _ready() -> void:
 	Global.player = self
+	update_player_speed()
 
 func _process(delta: float) -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
 	if PlayerData.stamina <= 0:
-		# Fixed: changed 10 to 10.0 for proper float division
-		PlayerData.move_speed = PlayerData.base_move_speed * (1.0 - PlayerData.wood_carrying / 10.0 + 0.05)
-		footstep_timer.wait_time = 0.5
 		is_sprinting = false
+		footstep_timer.wait_time = 0.5
+		update_player_speed()
 	elif is_sprinting:
 		PlayerData.stamina -= delta * 30
-	elif PlayerData.stamina < 100:
+		update_player_speed()
+	if PlayerData.stamina < 100:
 		PlayerData.stamina += delta * 5
 		
 	walking()
+
+# Centralized function that calculates speed cleanly in one place
+func update_player_speed() -> void:
+	# Base speed reduced by 10% per piece of wood carried
+	var current_speed = PlayerData.base_move_speed * (1.0 - (PlayerData.wood_carrying / 7.0))
 	
+	if is_sprinting:
+		current_speed *= 1.5
+		
+	
+	PlayerData.move_speed = max(20.0, current_speed)
+
 func steal_wood(amount):
 	PlayerData.wood_carrying += amount
 	PlayerData.wood_remaining -= amount
-	PlayerData.move_speed = PlayerData.base_move_speed * (1.0 - (PlayerData.wood_carrying / 10.0 + 0.05))
-	print(PlayerData.move_speed)
+	update_player_speed()
+	print("New Speed: ", PlayerData.move_speed)
 	
 func die():
 	get_tree().reload_current_scene()
-	PlayerData.move_speed = PlayerData.base_move_speed
+	PlayerData.base_move_speed = 100 # Reset base if needed
 	PlayerData.wood_carrying = 0
 	PlayerData.wood_stolen = 0
 	PlayerData.wood_remaining = 9
 	PlayerData.stamina = 100
+	update_player_speed()
 
 func walking():
 	if is_input_locked:
@@ -92,11 +105,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("sprint"):
 		if PlayerData.stamina <= 0:
 			return
-		PlayerData.move_speed *= 1.5
-		footstep_timer.wait_time = 0.3
 		is_sprinting = true
+		footstep_timer.wait_time = 0.3
+		update_player_speed()
 	elif event.is_action_released("sprint"):
-		# Fixed: changed 10 to 10.0 here as well
-		PlayerData.move_speed = PlayerData.base_move_speed * (1.0 - PlayerData.wood_carrying / 10.0 + 0.05)
-		footstep_timer.wait_time = 0.5
 		is_sprinting = false
+		footstep_timer.wait_time = 0.5
+		update_player_speed()
